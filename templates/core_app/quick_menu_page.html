@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    Quick Menu
+{% endblock %}
+
+{% block nav %}
+    {% include 'components/navbar_after_login.html' %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container hero">
+    <div class="row" style="margin-left: -12px;">
+        <div class="col">
+            <div class="row">
+                <div class="col-lg-2" style="margin-top: 250px;">
+                    <div class="list-group">
+                        <a class="list-group-item list-group-item-action" href="#list-home" data-bs-toggle="list">Daily Menu</a>
+                        <a class="list-group-item list-group-item-action" href="#list-profile" data-bs-toggle="list">Catering</a>
+                        <a class="list-group-item list-group-item-action" href="#list-messages" data-bs-toggle="list">Future use</a>
+                        <a class="list-group-item list-group-item-action" href="#list-settings" data-bs-toggle="list">Future use</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="tab-content">
+                        <h1 class="text-center">Create your menu</h1>
+                        <div><input type="text" style="border-radius: 12px;margin-left: 12px;width: 250px;" /><button class="btn btn-primary" type="button" style="border-radius: 12px;margin-left: 12px;height: 30px;padding-bottom: 0px;padding-top: 0px;">Search</button></div>
+                        <div style="margin-bottom: 12px;">
+                            <div><label class="form-label">Popular dishes</label>
+                                <div class="selectgroup selectgroup-pills">
+                                    <label class="selectgroup-item">
+                                        <input class="selectgroup-input" type="checkbox" name="value" value="HTML" checked />
+                                        <span class="selectgroup-button">HTML</span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input class="selectgroup-input" type="checkbox" name="value" value="CSS" />
+                                        <span class="selectgroup-button">CSS</span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input class="selectgroup-input" type="checkbox" name="value" value="PHP" />
+                                        <span class="selectgroup-button">PHP</span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input class="selectgroup-input" type="checkbox" name="value" value="JavaScript" />
+                                        <span class="selectgroup-button">JavaScript</span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input class="selectgroup-input" type="checkbox" name="value" value="Ruby" />
+                                        <span class="selectgroup-button">Ruby</span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input class="selectgroup-input" type="checkbox" name="value" value="Ruby" />
+                                        <span class="selectgroup-button">Ruby</span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input class="selectgroup-input" type="checkbox" name="value" value="C++" />
+                                        <span class="selectgroup-button">C++</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 21rem;border-top-left-radius: 20px;border-top-right-radius: 20px;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;box-shadow: 2px 2px 16px 8px rgba(0,0,0,0.1);min-width: 300px;border-style: none;max-width: 100%;margin: 16px;">
+                            <div class="card-body d-flex flex-column justify-content-between" style="padding-bottom: 20px;height: 290px;width: 300px;padding-right: 20px;padding-left: 20px;">
+                                <div class="text-center" style="margin-left: 20px;"><img src="{% static 'assets/img/no_food_picture.svg' %}" style="width: 160px;height: 100.5px;" /></div>
+                                <div style="width: 276px;margin-left: 12px;">
+                                    <h6 class="text-muted d-inline mb-2" style="color: #757575;font-size: 20px;font-family: 'Source Sans Pro', sans-serif;font-weight: 600;border-bottom-right-radius: 10px;border-top-right-radius: 10px;margin-left: -20px;padding-left: 20px;padding-right: 8px;padding-bottom: 2px;background: #cdcf66;padding-top: 2px;">R$80,00 a R$300,00</h6>
+                                    <h5 class="text-center" style="font-family: 'Source Sans Pro', sans-serif;font-weight: 700;color: rgb(255,160,0);margin-bottom: 8px;margin-top: 22px;width: 255px;text-align: center;padding-left: 13px;">Maquiagem Artística</h5><a class="btn btn-primary d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" role="button" style="margin-top: 20px;background: #128C7E;border-style: none;padding-top: 8px;padding-bottom: 8px;box-shadow: 2px 2px 8px rgba(117,117,117,0.71);width: 200px;text-align: center;padding-left: 12px;margin-left: 34px;" target="_blank"><br /><i class="fas fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="list-home" class="tab-pane fade" role="tabpanel">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sagittis id consectetur purus ut faucibus pulvinar. Integer quis auctor elit sed vulputate mi sit. Vitae congue eu consequat ac felis donec. Pellentesque elit eget gravida cum sociis natoque penatibus. Ultrices gravida dictum fusce ut. Justo donec enim diam vulputate ut pharetra sit. Fermentum iaculis eu non diam phasellus vestibulum. Tellus elementum sagittis vitae et leo duis ut. Tristique sollicitudin nibh sit amet commodo. </p>
+                        </div>
+                        <div id="list-profile" class="tab-pane fade" role="tabpanel">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Justo nec ultrices dui sapien. Id aliquet lectus proin nibh nisl condimentum id. Scelerisque purus semper eget duis. Eu sem integer vitae justo eget. Scelerisque varius morbi enim nunc faucibus. Sit amet consectetur adipiscing elit. Sed pulvinar proin gravida hendrerit lectus. Arcu odio ut sem nulla pharetra diam. Senectus et netus et malesuada fames ac. Nec ultrices dui sapien eget mi proin. Bibendum ut tristique et egestas quis ipsum. Mattis enim ut tellus elementum sagittis vitae. Fusce id velit ut tortor pretium viverra suspendisse potenti nullam.</p>
+                        </div>
+                        <div id="list-messages" class="tab-pane fade" role="tabpanel">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Natoque penatibus et magnis dis parturient. Elit ut aliquam purus sit amet luctus venenatis. Nunc id cursus metus aliquam eleifend mi in nulla posuere. Lacus vestibulum sed arcu non odio euismod lacinia. Ac turpis egestas maecenas pharetra. Vulputate dignissim suspendisse in est ante in nibh mauris cursus. Facilisis magna etiam tempor orci eu lobortis elementum nibh. Cursus turpis massa tincidunt dui ut ornare lectus. Aliquam etiam erat velit scelerisque in dictum non consectetur. Mollis aliquam ut porttitor leo a diam sollicitudin tempor id. Potenti nullam ac tortor vitae. At imperdiet dui accumsan sit amet nulla facilisi morbi. Id eu nisl nunc mi ipsum faucibus. Scelerisque varius morbi enim nunc faucibus a pellentesque sit. Tellus mauris a diam maecenas sed. Tristique nulla aliquet enim tortor. Nunc faucibus a pellentesque sit amet porttitor eget dolor. Id velit ut tortor pretium viverra.</p>
+                        </div>
+                        <div id="list-settings" class="tab-pane fade" role="tabpanel">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada proin libero nunc consequat. Gravida neque convallis a cras semper auctor. Metus aliquam eleifend mi in nulla posuere sollicitudin. Id velit ut tortor pretium. Nec sagittis aliquam malesuada bibendum arcu vitae elementum curabitur. Pellentesque habitant morbi tristique senectus et netus et. Non tellus orci ac auctor augue mauris augue neque. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Phasellus vestibulum lorem sed risus ultricies tristique nulla.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-xl-2 col-xxl-2" style="margin: 0px;margin-left: 0px;"></div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row" style="margin-top: 12px;margin-bottom: 12px;">
+        <div class="col-md-2 col-lg-2 col-xl-2 col-xxl-2"></div>
+        <div class="col-md-4"><a class="btn btn-primary d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" role="button" style="margin-top: 20px;background: #128C7E;border-style: none;padding-top: 8px;padding-bottom: 8px;box-shadow: 2px 2px 8px rgba(117,117,117,0.71);width: 200px;text-align: center;padding-left: 12px;margin-left: 34px;" target="_blank"><br /><i class="fas fa-check"></i> Order</a></div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'components/footer.html' %}
+{% endblock %}
+
+

@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    My account
+{% endblock %}
+
+{% block nav %}
+    {% include 'components/navbar_after_login.html' %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container hero">
+        <div class="row">
+            <div class="col">
+                <div class="row" style="margin-top: 131px;margin-right: -12px;margin-left: -12px;">
+                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                        <div class="list-group"><a class="list-group-item list-group-item-action" href="#list-profile" data-bs-toggle="list">Profile</a><a class="list-group-item list-group-item-action" href="#list-subscriptions" data-bs-toggle="list">Subscriptions</a><a class="list-group-item list-group-item-action" href="#list-settings" data-bs-toggle="list">Settings</a><a class="list-group-item list-group-item-action" href="#list-futureuse" data-bs-toggle="list">Future use</a></div>
+                    </div>
+                    <div class="col">
+                        <div class="tab-content">
+                            <div id="list-profile" class="tab-pane fade" role="tabpanel">
+                                <div class="col-md-8 offset-md-2" style="margin-left: 12px;">
+                                    <div style="border-radius: 12px;">
+                                        <div class="row">
+                                            <div class="col-md-3 offset-xl-0"><img src="{% static 'assets/img/profile.svg'%}" style="width: 178px;" />
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title"><i class="fas fa-wallet"></i></h4>
+                                                        <h6 class="text-muted card-subtitle mb-2">Wallet Balance</h6>
+                                                        <p class="card-text">Rs. 1000/- {{ user.wallet.balance }}/-</p><button class="btn btn-primary" type="button">Add Money</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <section class="contact-clean">
+                                                    <form method="post">
+                                                        {% csrf_token %}
+                                                        <h2 class="text-center">My Profile Details</h2>
+                                                        <div class="mb-3"><b>First Name: </b>{{ user.first_name }}</div>
+                                                        <div class="mb-3"><b>Last Name: </b>{{ user.last_name }}</div>
+                                                        <div class="mb-3"><b>Username: </b>{{ user.username }}</div>
+                                                        <div class="mb-3"><b>Email: </b>{{ user.email }}</div>
+                                                        <div class="mb-3"><b>rs/-: </b>{{ user.wallet.balance }}</div>
+
+
+                                                        {% for obj in form %}
+                                                            <span>
+                                                                {{ obj }} {% if obj.help_text %} <p style="font-size: 10px; margin-left: 12px;">{{ obj.help_text|safe }}</p> {% endif %}
+                                                            </span>
+                                                        {% endfor %}
+
+                                                        <div class="mb-3"><button class="btn btn-primary" type="submit">Save</button></div>
+                                                    </form>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="list-subscriptions" class="tab-pane fade" role="tabpanel">
+                                <div class="col-md-8 offset-md-2" style="margin-left: 12px;">
+                                    <div style="border-radius: 12px;">
+                                        <div class="row">
+                                            <div class="col-md-3 offset-xl-0"><img src="{% static 'assets/img/access.svg' %}" style="width: 178px; height: auto;" />
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title"><i class="fas fa-wallet"></i></h4>
+                                                        <h6 class="text-muted card-subtitle mb-2">Wallet Balance</h6>
+                                                        <p class="card-text">Rs. 1000/-</p><button class="btn btn-primary" type="button">Add Money</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <section class="contact-clean">
+                                                    <form method="post">
+                                                        <h2 class="text-center">My Subscriptions</h2>
+                                                        <div>
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Title of subscription</h4>
+                                                                    <h6 class="text-muted card-subtitle mb-2">Expiry date: 1/1/9999</h6>
+                                                                    <p class="card-text">Subscription detail</p><a class="card-link" href="#">Renew</a><a class="card-link" href="#">Cancel auto renew</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <h4 style="color: var(--bs-gray-900);text-align: center;padding-top: 0px;margin-top: 20px;margin-bottom: 12px;">More available subscriptions</h4>
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Title of subscription</h4>
+                                                                    <h6 class="text-muted card-subtitle mb-2">Days or months and price</h6>
+                                                                    <p class="card-text">Subscription details</p><a class="card-link" href="#">Buy</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="list-settings" class="tab-pane fade" role="tabpanel">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Natoque penatibus et magnis dis parturient. Elit ut aliquam purus sit amet luctus venenatis. Nunc id cursus metus aliquam eleifend mi in nulla posuere. Lacus vestibulum sed arcu non odio euismod lacinia. Ac turpis egestas maecenas pharetra. Vulputate dignissim suspendisse in est ante in nibh mauris cursus. Facilisis magna etiam tempor orci eu lobortis elementum nibh. Cursus turpis massa tincidunt dui ut ornare lectus. Aliquam etiam erat velit scelerisque in dictum non consectetur. Mollis aliquam ut porttitor leo a diam sollicitudin tempor id. Potenti nullam ac tortor vitae. At imperdiet dui accumsan sit amet nulla facilisi morbi. Id eu nisl nunc mi ipsum faucibus. Scelerisque varius morbi enim nunc faucibus a pellentesque sit. Tellus mauris a diam maecenas sed. Tristique nulla aliquet enim tortor. Nunc faucibus a pellentesque sit amet porttitor eget dolor. Id velit ut tortor pretium viverra.</p>
+                            </div>
+                            <div id="list-furtureuse" class="tab-pane fade" role="tabpanel">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada proin libero nunc consequat. Gravida neque convallis a cras semper auctor. Metus aliquam eleifend mi in nulla posuere sollicitudin. Id velit ut tortor pretium. Nec sagittis aliquam malesuada bibendum arcu vitae elementum curabitur. Pellentesque habitant morbi tristique senectus et netus et. Non tellus orci ac auctor augue mauris augue neque. At imperdiet dui accumsan sit amet nulla facilisi morbi tempus. Phasellus vestibulum lorem sed risus ultricies tristique nulla.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'components/footer.html' %}
+{% endblock %}
+
+
+<h2 class="text-center">My Profile Details</h2>
+<div class="mb-3"><input class="form-control" type="text" name="name" placeholder="Name" /></div>
+<div class="mb-3"><input class="form-control is-invalid" type="email" name="email" placeholder="Email" /><small class="form-text text-danger">Please enter a correct email address.</small></div>
+<div class="mb-3"><textarea class="form-control" name="message" placeholder="Message" rows="14"></textarea></div>
+
+<h1>This is testing</h1>

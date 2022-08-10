@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block nav %}
+    {% include 'components/navbar_before_login.html' %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container hero">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <h1 class="text-center">About Us</h1>
+                    <div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <section class="highlight-clean">
+                                    <div class="container">
+                                        <div class="intro">
+                                            <h6 class="text-muted card-subtitle mb-2">What makes KloudKitchen different?</h6>
+                                            <p class="card-text">Kloud Kitchen is a company specialized in catering food to customers in a unique way, customers can enjoy&nbsp;<em>à la carte&nbsp;</em>at the comfort of a single catering bill.<br></p>
+                                            <p class="card-text">We believe every one deserves to have a choice of their own menu, flexible to suit their own pallet. <br />Our customers would want simplicity and we deliver it through innovation. We love to say that our customers can now taste each dish in their menu special to that resto,<br /><br /></p>
+                                            <div><img src="{% static 'assets/img/shopping.svg' %}" style="width: 200px;" /></div>
+                                            <p><br />&quot;I want Vidyarthi Bhavan Dosa and MTR Rava idli, catered together for breakfast on XX date for XX number of my guests for XX occasion.&quot;<br /><br /></p>
+                                            <div><img src="{% static 'assets/img/software_engineer.svg' %}" style="width: 200px;" /></div>
+                                            <p class="card-text"><br />&quot;Yup, Done, we will deliver it to you.&quot;<br /><br />We would like to break the barriers to live up to what we believe.<br /><br /><br /></p>
+                                        </div>
+                                        <div class="buttons"><a class="btn btn-primary" role="button" href="{% url 'acnt:signup' %}">Sign up</a>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="col-md-6"><img src="{% static 'assets/img/Chef_Isometric.svg' %}" style="width: 375px;"></div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 12px;margin-bottom: 12px;">
+                        <section class="testimonials-clean">
+                            <div class="container">
+                                <div class="intro">
+                                    <h2 class="text-center">Testimonials </h2>
+                                    <p class="text-center">Our customers love us! Read what they have to say below.</p>
+                                </div>
+                                <div class="row people">
+
+                                    {% for item in testimonial %}
+                                        <div class="col-md-6 col-lg-4 item">
+                                        <div class="box">
+                                            <p class="description">{{ item.details }}.</p>
+                                        </div>
+                                        <div class="author" style="margin-top: 29px;"><img class="rounded-circle" src="assets/img/1.jpg">
+                                            <h5 class="name">{{ item.name }}</h5>
+                                            <p class="title">{{ item.user }}.</p>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div>
+                        <h4 class="text-center text-white" style="margin-top: 20px;margin-bottom: 10px;">Our clients</h4>
+                        <div class="brands"><a href="#"> <img src="{% static 'assets/img/instacart.png' %}"><img src="{% static 'assets/img/kickstarter.png' %}"><img src="{% static 'assets/img/lyft.png' %}"><img src="{% static 'assets/img/shopify.png' %}"><img src="{% static 'assets/img/pinterest.png' %}"><img src="{% static 'assets/img/twitter.png' %}"></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'components/footer.html' %}
+{% endblock %}

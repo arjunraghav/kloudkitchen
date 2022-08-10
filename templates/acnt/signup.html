@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    Sign up
+{% endblock %}
+
+{% block nav %}
+    {% include 'components/navbar_before_login.html' %}
+{% endblock %}
+
+{% block body %}
+<form action="" method="post">
+{% csrf_token %}
+
+    <div class="container hero" style="width: 900px; margin-top: 50px; margin-bottom: 50px">
+        <div class="card" style="border-radius: 22px;box-shadow: 4px 4px 20px 20px;background: rgba(255,255,255,0.6);margin-right: 0px;">
+            <div class="card-body">
+                <div class="row" style="width: 900px;">
+
+
+
+                    <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6" style="width: 350px;">
+                        <h4 style="text-align: center;">Signup</h4>
+                        <h6 class="text-muted mb-2" style="margin-left: 12px;">Enter your details</h6>
+
+
+
+                        {% for obj in form %}
+                             <div style="margin-left: 12px;">
+                                <span>
+                                    {{ obj }} {% if obj.help_text %} <p style="font-size: 10px; margin-left: 12px;">{{ obj.help_text|safe }}</p> {% endif %}
+                                </span>
+
+                            </div>
+                        {% endfor %}
+
+                        <input class="btn btn-primary" type="submit" value="Signup" style="margin-top: 12px;margin-bottom: 12px;margin-right: 0px;margin-left: 12px;border-radius: 12px;border-width: 1px;"/>
+                    </div>
+
+
+                    <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-6" style="padding-left: 0px;padding-right: 0px;width: 350px;">
+                        <div style="width: 467px;"><img src="{% static 'assets/img/signup.svg'%}" style="width: 251.1px;height: 277.2px;margin-left: 50px;" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'components/footer.html' %}
+{% endblock %}
