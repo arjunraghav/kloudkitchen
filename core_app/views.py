@@ -35,3 +35,7 @@ class AboutView(TemplateView):
 
 class QuickMenuView(TemplateView):
     template_name = 'core_app/quick_menu_page.html'
+
+
+class ManageMyMenuVendor(TemplateView):
+    template_name = 'core_app/quick_menu_page.html'

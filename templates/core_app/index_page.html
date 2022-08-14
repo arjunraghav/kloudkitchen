@@ -9,7 +9,11 @@
 {% endblock %}
 
 {% block nav %}
-    {% include 'components/navbar_before_login.html' %}
+    {% if user.is_authenticated %}
+        {% include 'components/navbar_after_login.html' %}
+    {% else %}
+        {% include 'components/navbar_before_login.html' %}
+    {% endif %}
 {% endblock %}
 
 {% block body %}

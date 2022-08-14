@@ -23,20 +23,15 @@ USER_TYPE = (('C', 'CUSTOMER'),
 
 class CustomUser(AbstractUser, PermissionsMixin):
     email = models.EmailField(_("Email address"), unique=True)
-    slug = models.SlugField(null=True, blank=True)
     customer_type = models.CharField(max_length=1, choices=USER_TYPE,
                                      blank=False, null=False,
                                      help_text=_("Are you a vendor?"))
 
+    # slug = models.SlugField(null=True, blank=True)
+
     REQUIRED_FIELDS = ['email']
 
     objects = CustomUserManager()
-
-    # def save(self, *args, **kwargs):
-    #     if self.customer_type == 'C':
-    #         group = Group.objects.get(name=self.customer_type)
-    #         self.groups.add(group)
-    #     super().save(*args, **kwargs)
 
     def __str__(self):
         return self.username
@@ -48,10 +43,16 @@ class CustomUser(AbstractUser, PermissionsMixin):
         else:
             return "Customer"
 
-    def save(self, *args, **kwargs):
-        if self.slug is None:
-            self.slug = slugify(self.username)
-        super(CustomUser, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if self.customer_type == 'C':
+    #         group = Group.objects.get(name=self.customer_type)
+    #         self.groups.add(group)
+    #     super().save(*args, **kwargs)
+
+    # def save(self, *args, **kwargs):
+    #     if self.slug is None:
+    #         self.slug = slugify(self.username)
+    #     super(CustomUser, self).save(*args, **kwargs)
 
 
 class CustomerProfile(models.Model):
@@ -63,9 +64,15 @@ class CustomerProfile(models.Model):
     address = models.CharField(max_length=250, help_text=_("Enter your street address."), null=True)
     city = models.CharField(choices=CITY, max_length=20, help_text=_("Select your city."), null=True)
     pincode = models.DecimalField(decimal_places=0, max_digits=6, help_text=_("Pincode."), null=True)
+    slug = models.SlugField(null=True, blank=True)
 
     def __str__(self):
         return self.user.first_name
+
+    def save(self, *args, **kwargs):
+        if self.slug is None:
+            self.slug = slugify(self.user.username)
+        super(CustomerProfile, self).save(*args, **kwargs)
 
 
 class VendorProfile(models.Model):
@@ -82,9 +89,15 @@ class VendorProfile(models.Model):
     address = models.CharField(max_length=250, help_text=_("Street address of the restaurant/organization."), null=True)
     city = models.CharField(choices=CITY, null=True, max_length=20, help_text=_("Select your city."))
     pincode = models.DecimalField(decimal_places=0, max_digits=6, help_text=_("Pincode."), null=True)
+    slug = models.SlugField(null=True, blank=True)
 
     def __str__(self):
         return self.user.username
+
+    def save(self, *args, **kwargs):
+        if self.slug is None:
+            self.slug = slugify(self.user.username)
+        super(VendorProfile, self).save(*args, **kwargs)
 
 
 class Review(models.Model):

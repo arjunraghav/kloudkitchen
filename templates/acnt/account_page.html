@@ -19,7 +19,12 @@
             <div class="col">
                 <div class="row" style="margin-top: 131px;margin-right: -12px;margin-left: -12px;">
                     <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
-                        <div class="list-group"><a class="list-group-item list-group-item-action" href="#list-profile" data-bs-toggle="list">Profile</a><a class="list-group-item list-group-item-action" href="#list-subscriptions" data-bs-toggle="list">Subscriptions</a><a class="list-group-item list-group-item-action" href="#list-settings" data-bs-toggle="list">Settings</a><a class="list-group-item list-group-item-action" href="#list-futureuse" data-bs-toggle="list">Future use</a></div>
+                        <div class="list-group">
+                            <a class="list-group-item list-group-item-action" href="#list-profile" data-bs-toggle="list">Profile</a>
+                            <a class="list-group-item list-group-item-action" href="#list-subscriptions" data-bs-toggle="list">Subscriptions</a>
+                            <a class="list-group-item list-group-item-action" href="#list-settings" data-bs-toggle="list">Settings</a>
+                            <a class="list-group-item list-group-item-action" href="#list-futureuse" data-bs-toggle="list">Future use</a>
+                        </div>
                     </div>
                     <div class="col">
                         <div class="tab-content">
@@ -32,7 +37,7 @@
                                                     <div class="card-body">
                                                         <h4 class="card-title"><i class="fas fa-wallet"></i></h4>
                                                         <h6 class="text-muted card-subtitle mb-2">Wallet Balance</h6>
-                                                        <p class="card-text">Rs. 1000/- {{ user.wallet.balance }}/-</p><button class="btn btn-primary" type="button">Add Money</button>
+                                                        <p class="card-text">Rs. {{ user.wallet.balance }}/-</p><button class="btn btn-primary" type="button">Add Money</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -71,7 +76,7 @@
                                                     <div class="card-body">
                                                         <h4 class="card-title"><i class="fas fa-wallet"></i></h4>
                                                         <h6 class="text-muted card-subtitle mb-2">Wallet Balance</h6>
-                                                        <p class="card-text">Rs. 1000/-</p><button class="btn btn-primary" type="button">Add Money</button>
+                                                        <p class="card-text">Rs. {{ user.wallet.balance }}/-</p><button class="btn btn-primary" type="button">Add Money</button>
                                                     </div>
                                                 </div>
                                             </div>

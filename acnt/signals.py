@@ -14,15 +14,18 @@ def assign_user_group(sender, instance, created, **kwargs):
     """
     if created:
         customer_type = instance.customer_type
-        group = Group.objects.get(name='A')
         if customer_type == 'C':
             group = Group.objects.get(name=customer_type)
             customer_profile = CustomerProfile.objects.create(user=instance)
             customer_wallet = Wallet.objects.create(user=instance)
+            group.user_set.add(instance)
         elif customer_type == 'V':
             group = Group.objects.get(name=customer_type)
             vendor_profile = VendorProfile.objects.create(user=instance)
             vendor_wallet = Wallet.objects.create(user=instance)
+            group.user_set.add(instance)
+        elif customer_type == 'C':
+            group = Group.objects.get(name=customer_type)
+            group.user_set.add(instance)
         # instance.groups.add(group)
-        group.user_set.add(instance)
         instance.save()

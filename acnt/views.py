@@ -4,7 +4,7 @@ from django.contrib import messages
 from .forms import RegisterForm, CustomAuthenticationForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth import get_user_model
-from django.views.generic import CreateView, TemplateView, UpdateView
+from django.views.generic import CreateView, TemplateView, UpdateView, RedirectView
 from django.urls import reverse_lazy
 from .models import *
 from .forms import *
@@ -38,17 +38,16 @@ class MyAccountViews(UpdateView):
     model = CustomerProfile
     template_name = 'acnt/account_page.html'
     form_class = CustomerProfileForm
-    success_url = reverse_lazy('acnt:login')
+    success_url = reverse_lazy('acnt:account')
     context_object_name = 'form'
     queryset = CustomerProfile.objects.all()
+    slug_field = 'slug'
+    slug_url_kwarg = 'slug'
 
-    # slug_field = 'slug'
-    # slug_url_kwarg = 'slug'
-
-    def get_queryset(self):
-        print(self.kwargs)
-        user = User.objects.get(id=self.kwargs.get("pk"))
-        return CustomerProfile.objects.all()
+    # def get_queryset(self):
+    #     print(self.kwargs)
+    #     user = User.objects.get(id=self.kwargs.get("pk"))
+    #     return CustomerProfile.objects.get(user=user)
 
     # def get_object(self, queryset=None):
     #     print(self.kwargs)
@@ -60,3 +59,7 @@ class MyAccountViews(UpdateView):
     #     # context['form'] = Testimonial.get_latest_3_testimonial()
     #     print(self.kwargs)
     #     return context
+
+
+class AddMoney(RedirectView):
+    pass
