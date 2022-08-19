@@ -1,0 +1,26 @@
+<br>
+    <table class="table table-success table-striped">
+
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Details</th>
+          <th scope="col">Dish Category</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      {% if dish %}
+        {% for item in dish %}
+            <tr>
+              <td>{{ item.title }}</td>
+              <td>{{ item.details }}</td>
+              <td>{{ item.dish_category }}</td>
+            </tr>
+        {% endfor %}
+      {% endif %}
+      </tbody>
+
+    </table>
+
+

@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    Manage My Menu
+{% endblock %}
+
+{% block nav %}
+    {% include 'components/navbar_after_login.html' %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container hero">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h1 class="text-center">Manage my menu</h1>
+                <div style="border-radius: 12px;">
+                    <div class="row">
+
+                        <div class="col">
+                            <section class="contact-clean">
+                                <form method="post">
+                                    <h2 class="text-center">Add a Cuisine</h2>
+
+                                    <div>
+
+    {#                                    <form method="post">#}
+                                            {% csrf_token %}
+                                                {{ form.as_p }}
+                                            <input class="btn btn-primary" hx-post="{% url 'core_app:manage_menu_add' %}" hx-target="#cuisine-list" type="submit" value="Add">
+    {#                                    </form>#}
+
+                                        <br>
+                                        <br>
+                                        <h2>Available now in the list</h2>
+
+                                        <div id="cuisine-list">
+                                            {% include 'core_app/partials/cuisine_list.html' %}
+                                        </div>
+                                    </div>
+                                </form>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                <li class="nav-item"><a id="item-cuisine-tab" class="nav-link active" role="tab" aria-controls="item-cuisine" aria-selected="true" href="#item-cuisine" data-bs-toggle="tab">Cuisine</a></li>
+                <li class="nav-item"><a id="item-dishcategory-tab" class="nav-link" role="tab" aria-controls="item-dishcategory" aria-selected="false" href="#item-dishcategory" data-bs-toggle="tab">Dish Category</a></li>
+                <li class="nav-item"><a id="item-dish-tab" class="nav-link" role="tab" aria-controls="item-dish" aria-selected="false" href="#item-dish" data-bs-toggle="tab">Dish</a></li>
+                <li class="nav-item"><a id="item-menu-tab" class="nav-link" role="tab" aria-controls="item-menu" aria-selected="false" href="#item-menu" data-bs-toggle="tab">Create Menu</a></li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div id="nav-tabContent" class="tab-content">
+                <div id="item-cuisine" class="tab-pane fade show active" role="tabpanel" aria-labelledby="item-cuisine">
+                    <h4>Add a Cuisine</h4>
+                    <p>Add a cuisine to list if not found in search</p>
+
+                    <div>
+
+                        <form method="post">
+                            {% csrf_token %}
+                                {{ form.cuisine_form.as_p }}
+                            <input class="btn btn-primary" hx-post="{% url 'core_app:manage_menu_add' %}" hx-target="#cuisine-list" type="submit" value="Add">
+                        </form>
+
+                        <br>
+
+                        <h3>The list of Cuisine added by you</h3>
+
+                        <div id="cuisine-list">
+                            {% include 'core_app/partials/cuisine_list.html' %}
+                        </div>
+                    </div>
+
+                </div>
+                <div id="item-dishcategory" class="tab-pane fade" role="tabpanel" aria-labelledby="item-dishcategory">
+                    <h4>Add a Dish Category</h4>
+                    <p>Add a dish category to list if not found in search</p>
+
+                    <div>
+
+                        <form method="post">
+                            {% csrf_token %}
+                                {{ form.dish_cat_form.as_p }}
+                            <input class="btn btn-primary" hx-post="{% url 'core_app:manage_menu_add_dish' %}" hx-target="#dish-list" type="submit" value="Add">
+                        </form>
+
+                        <br>
+
+                        <h3>The list of Cuisine added by you</h3>
+
+                        <div id="dish-list">
+                            {% include 'core_app/partials/dish_cat_list.html' %}
+                        </div>
+                    </div>
+
+                </div>
+                <div id="item-dish" class="tab-pane fade" role="tabpanel" aria-labelledby="item-dish">
+                    <h4>Third Item Title</h4>
+                    <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-primary" type="button">Button</button>
+                </div>
+                <div id="item-menu" class="tab-pane fade" role="tabpanel" aria-labelledby="item-menu">
+                    <h4>Third Item Title</h4>
+                    <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><button class="btn btn-primary" type="button">Button</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'components/footer.html' %}
+{% endblock %}

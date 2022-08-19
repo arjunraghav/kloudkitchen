@@ -1,0 +1,16 @@
+            <input type="search"
+                   value="{{ search_term }}"
+                   name="search"
+                   placeholder="Begin Typing To Search Users..."
+                   hx-get="{% url 'core_app:manage_menu_list' %}?search={{ search_term }}"
+                   hx-trigger="keyup changed delay:500ms, search"
+                   hx-target="#search-results"
+                   hx-indicator=".htmx-indicator">
+
+
+
+            <div id="search-results">
+
+{#            {% include 'components/newtestingpage.html' %}#}
+
+            </div>

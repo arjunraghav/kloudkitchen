@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+this is testing page
+
+{#        <h3>#}
+{#          Search Contacts#}
+{#            <br>#}
+{#          <span class="htmx-indicator">#}
+{#            Searching...<i>#}
+{#           </span>#}
+{#        </h3>#}
+
+{#        <form>#}
+            <input type="search"
+                   value="{{ search_term }}"
+                   name="search"
+                   placeholder="Begin Typing To Search Users..."
+                   hx-get="{% url 'core_app:manage_menu_list' %}?search={{ search_term }}"
+                   hx-trigger="keyup changed delay:500ms, search"
+                   hx-target="#search-results"
+                   hx-indicator=".htmx-indicator">
+
+            <input type="submit" value="submit">
+{#        </form>#}
+
+
+
+
+    <div id="search-results">
+
+{#        {% if cuisine.has_next %}#}
+{#            <a href="{% url 'core_app:manage_menu_list' %}/?search={{ search_term }}">#}
+{#        {% endif %}#}
+
+        {% include 'components/../core_app/partials/load_cuisine.html' %}
+
+    </div>
+
+
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.8.0" integrity="sha384-cZuAZ+ZbwkNRnrKi05G/fjBX+azI9DNOkNYysZ0I/X5ZFgsmMiBXgDZof30F5ofc" crossorigin="anonymous"></script>
+
+    <script>
+    document.body.addEventListener('htmx:configRequest', (event) => {
+        event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}'; //insert csrf token when performing AJAX request
+    })
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<div>
+
+    <input type="search"
+           style="border-radius: 12px;margin-left: 12px;width: 250px;"
+           value="{{ search_term }}"
+           name="search"
+           placeholder=" Search available dish..."
+           hx-get="{% url 'core_app:manage_menu_list_dish' %}"
+           hx-trigger="keyup changed delay:500ms, search"
+           hx-target="#search-results"
+           hx-indicator=".htmx-indicator">
+
+
+    <div id="search-results">
+
+{#            {% include 'components/newtestingpage.html' %}#}
+        <br>
+
+        <table class="table table-success table-striped">
+
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Details</th>
+              <th scope="col">Dish Category</th>
+            </tr>
+          </thead>
+
+          <tbody>
+          {% if dish %}
+            {% for item in dish %}
+                <tr>
+                  <td>{{ item.title }}</td>
+                  <td>{{ item.details }}</td>
+                  <td>{{ item.dish_category }}</td>
+                </tr>
+            {% endfor %}
+          {% endif %}
+          </tbody>
+
+        </table>
+
+    </div>
+
+
+{#    {% if cuisine.has_next %}#}
+{#        <a href="{% url 'core_app:manage_menu_list' %}?search={{ search_term }}">#}
+{#    {% endif %}#}
+
+
+
+{#    <div class="pagination">#}
+{#        <span class="step-links">#}
+{#            {% if page_obj.has_previous %}#}
+{#                <a href="?page=1">&laquo; first</a>#}
+{#                <a href="?page={{ page_obj.previous_page_number }}">previous</a>#}
+{#            {% endif %}#}
+{##}
+{#            <span class="current">#}
+{#                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.#}
+{#            </span>#}
+{##}
+{#            {% if page_obj.has_next %}#}
+{#                <a href="?page={{ page_obj.next_page_number }}">next</a>#}
+{#                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>#}
+{#            {% endif %}#}
+{#        </span>#}
+{#    </div>#}
+
+</div>
+
+

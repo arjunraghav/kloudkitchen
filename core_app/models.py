@@ -41,7 +41,7 @@ class DishCategory(models.Model):
 
 class Dish(models.Model):
     dish_category = models.ForeignKey(DishCategory, on_delete=models.CASCADE, related_name='dish')
-    title = models.CharField(max_length=150, help_text=_("Title of the Dish Category."), unique=True)
+    title = models.CharField(max_length=150, help_text=_("Title of the Dish."), unique=True)
     details = models.TextField(max_length=3000, blank=True, help_text=_("Enter the details."))
     created_at = models.DateField(auto_now_add=True, null=True)
 
