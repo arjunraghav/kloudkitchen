@@ -15,7 +15,16 @@
 
                 {% if user.customer_type == 'V' and user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'core_app:quick_menu' %}">Manage Orders</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'core_app:manage_menu_add' %}">Manage My Menu</a></li>
+
+                    <li class="nav-item dropdown">
+                    <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Manage My Menu</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'core_app:manage_menu_add' %}">Add Cuisine</a>
+                        <a class="dropdown-item" href="{% url 'core_app:manage_menu_add_dish_cat' %}">Add Dish Category</a>
+                        <a class="dropdown-item" href="{% url 'core_app:manage_menu_add_dish' %}">Add Dish</a>
+                    </div>
+                    </li>
+
                     <li class="nav-item"><a class="nav-link" href="{% url 'acnt:account' slug=user.vendor_profile.slug %}">My Account</a></li>
 
                 {% elif user.customer_type == 'C' and user.is_authenticated %}
