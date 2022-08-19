@@ -3,6 +3,7 @@ from django.dispatch import receiver
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from acnt.models import *
+from core_app.models import VendorMenuId
 
 User = get_user_model()
 

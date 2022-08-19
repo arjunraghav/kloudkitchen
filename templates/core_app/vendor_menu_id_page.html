@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    Manage My Menu | Create menu
+{% endblock %}
+
+
+{% block nav %}
+    {% include 'components/navbar_after_login.html' %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container hero">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h1 class="text-center">Manage my menu</h1>
+                <div style="border-radius: 12px;">
+                    <div class="row">
+
+                        <div class="col">
+                            <section class="contact-clean">
+                                <form method="post">
+                                    <h2 class="text-center">Add a Menu</h2>
+
+                                    <div>
+
+{#                                        <form method="post">#}
+                                            {% csrf_token %}
+                                                {{ form.as_p }}
+                                            <input class="btn btn-primary" hx-post="{% url 'core_app:manage_menu_create_menu_id' %}" hx-target="#dish-list" type="submit" value="Add">
+{#                                        </form>#}
+
+                                        <br>
+
+                                        <h3>The list of Dish added by you</h3>
+
+                                        <div id="dish-list">
+                                            {% include 'core_app/partials/dish_list.html' %}
+                                        </div>
+                                    </div>
+                                </form>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'components/footer.html' %}
+{% endblock %}

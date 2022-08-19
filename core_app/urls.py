@@ -19,6 +19,9 @@ urlpatterns = [
     path('managemenu/add/dish/', views.ManageMyMenuVendorDishCreateView.as_view(), name='manage_menu_add_dish'),
     path('managemenu/list/dish/', views.ManageMyMenuVendorDishListView.as_view(), name='manage_menu_list_dish'),
 
+    path('managemenu/create_menu_id', views.VendorMenuIdCreateView.as_view(), name='manage_menu_create_menu_id'),
+    path('managemenu/create_menu', views.VendorMenuCreateView.as_view(), name='manage_menu_create_menu'),
+
     # path('managemenu/new/', views.NewManageMyMenuTemplateView.as_view(), name='new_manage_menu_template'),
     # path('managemenu/new/add/', views.NewManageMyMenyCreateView.as_view(), name='new_manage_menu_create'),
 ]

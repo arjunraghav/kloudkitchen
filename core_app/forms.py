@@ -46,3 +46,15 @@ class DishForm(forms.ModelForm):
             # 'dish_category': forms.ChoiceField(
             #     attrs = {'class': 'form-control', 'type': 'input', 'name': 'title', 'placeholder': 'Title'}),
         }
+
+
+class VendorMenuIdForm(forms.ModelForm):
+    class Meta:
+        model = VendorMenuId
+        fields = "__all__"
+
+
+class VendorMenuForm(forms.ModelForm):
+    class Meta:
+        model = VendorMenu
+        fields = "__all__"

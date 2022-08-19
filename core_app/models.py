@@ -62,7 +62,7 @@ class VendorMenuId(models.Model):
     vendor = models.ForeignKey(VendorProfile, on_delete=models.CASCADE, related_name='vendor_menu_id')
 
     def __str__(self):
-        return f'{self.vendor.est_name}_{self.menu_id}'
+        return f'{self.vendor.est_name}_{self.menu_type}'
 
 
 class VendorMenu(models.Model):

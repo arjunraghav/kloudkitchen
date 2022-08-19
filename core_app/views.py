@@ -39,7 +39,8 @@ class QuickMenuView(TemplateView):
     template_name = 'core_app/quick_menu_page.html'
 
 
-class ManageMyMenuVendorCuisineCreateView(CreateView):
+class ManageMyMenuVendorCuisineCreateView(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('acnt:login')
     context_object_name = 'context'
     model = Cuisine
     queryset = Cuisine.objects.all()
@@ -67,7 +68,8 @@ class ManageMyMenuVendorCuisineCreateView(CreateView):
         return context
 
 
-class ManageMyMenuVendorCuisineListView(ListView):
+class ManageMyMenuVendorCuisineListView(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('acnt:login')
     http_method_names = ['get', 'post']
     allow_empty = True
     context_object_name = 'cuisine'
@@ -91,7 +93,8 @@ class ManageMyMenuVendorCuisineListView(ListView):
         return data
 
 
-class ManageMyMenuVendorDishCatCreateView(CreateView):
+class ManageMyMenuVendorDishCatCreateView(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('acnt:login')
     context_object_name = 'context'
     model = DishCategory
     queryset = DishCategory.objects.all()
@@ -106,7 +109,8 @@ class ManageMyMenuVendorDishCatCreateView(CreateView):
         return context
 
 
-class ManageMyMenuVendorDishCatListView(ListView):
+class ManageMyMenuVendorDishCatListView(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('acnt:login')
     http_method_names = ['get', 'post']
     allow_empty = True
     context_object_name = 'dish_cat'
@@ -138,7 +142,8 @@ class ManageMyMenuVendorDishCatListView(ListView):
         return data
 
 
-class ManageMyMenuVendorDishCreateView(CreateView):
+class ManageMyMenuVendorDishCreateView(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('acnt:login')
     context_object_name = 'context'
     model = Dish
     queryset = Dish.objects.all()
@@ -153,7 +158,8 @@ class ManageMyMenuVendorDishCreateView(CreateView):
         return context
 
 
-class ManageMyMenuVendorDishListView(ListView):
+class ManageMyMenuVendorDishListView(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('acnt:login')
     http_method_names = ['get', 'post']
     allow_empty = True
     context_object_name = 'dish_cat'
@@ -188,6 +194,23 @@ class ManageMyMenuVendorDishListView(ListView):
         data['dish'] = Dish.objects.all()
         return data
 
+
+class VendorMenuIdCreateView(CreateView):
+    context_object_name = 'context'
+    model = VendorMenuId
+    queryset = VendorMenuId.objects.all()
+    form_class = VendorMenuIdForm
+    template_name = 'core_app/vendor_menu_id_page.html'
+    success_url = reverse_lazy('core_app:manage_menu_create_menu_id')
+
+
+class VendorMenuCreateView(CreateView):
+    context_object_name = 'context'
+    model = VendorMenu
+    queryset = VendorMenu.objects.all()
+    form_class = VendorMenuForm
+    template_name = 'core_app/vendor_menu_page.html'
+    success_url = reverse_lazy('core_app:manage_menu_create_menu')
 #
 # # testing new pattern
 # class NewManageMyMenuTemplateView(TemplateView):
